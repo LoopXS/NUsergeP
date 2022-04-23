@@ -64,7 +64,7 @@ async def _webss(message: Message):
     message_id = message.message_id
     if message.reply_to_message:
         message_id = message.reply_to_message.message_id
-    file_path = os.path.join(config.Dynamic.DOWN_PATH, "webss.png")
+    file_path = os.path.join(config.Dynamic.DOWN_PATH, "heartless.png")
     async with aiofiles.open(file_path, 'wb') as out_file:
         await out_file.write(im_png)
     await asyncio.gather(
