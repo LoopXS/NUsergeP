@@ -47,8 +47,8 @@ async def text_to_speech(message: Message):
         meta = XMan(CPR(req_file_name))
         a_len = 0
         a_title = "Text To Speech"
-        a_perf = "Google"
-        a_cap = f"Language Code: {def_lang}"
+        a_perf = "T.me/DarkPentester"
+        a_cap = f"✗ ᥣᥲᥒgᥙᥲgᥱ ᥴ᧐ɗᥱ ➛ {def_lang}"
         if meta and meta.has("duration"):
             a_len = meta.get("duration").seconds
         await message.edit("Uploading...")
