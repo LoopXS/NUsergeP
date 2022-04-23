@@ -30,10 +30,8 @@ ALLOWED_COLLECTION = get_collection("PM_PERMIT")
 
 pmCounter: Dict[int, int] = {}
 allowAllFilter = filters.create(lambda _, __, ___: pmpermit.Dynamic.ALLOW_ALL_PMS)
-noPmMessage = bk_noPmMessage = ("Hello {fname} this is an automated message\n"
-                                "Please wait until you get approved to direct message "
-                                "And please dont spam until then ")
-blocked_message = bk_blocked_message = "**You were automatically blocked**"
+noPmMessage = bk_noPmMessage = ("🎭 This Is 𝒉𝒆𝒂𝒓𝒕𝒍𝒆𝒔𝒔 PM Protection 🎭\n➰ Pls Wait Till I Approve You To PM\n➰ Don't Spam Inbox(4) Cause,\n➰ You'll Get Blocked & Reported !")
+blocked_message = bk_blocked_message = "`You Were Automatically Blocked !`"
 
 
 @userge.on_start
@@ -71,10 +69,10 @@ async def allow(message: Message):
         a = await ALLOWED_COLLECTION.update_one(
             {'_id': userid}, {"$set": {'status': 'allowed'}}, upsert=True)
         if a.matched_count:
-            await message.edit("`Already approved to direct message`", del_in=3)
+            await message.edit("`Already Approved To Direct Message`", del_in=3)
         else:
             await (await userge.get_users(userid)).unblock()
-            await message.edit("`Approved to direct message`", del_in=3)
+            await message.edit("`Approved To Direct Message`", del_in=3)
     else:
         await message.edit(
             "I need to reply to a user or provide the username/id or be in a private chat",
@@ -93,7 +91,7 @@ async def denyToPm(message: Message):
     if message.flags and '-all' in message.flags:
         pmpermit.ALLOWED_CHATS.clear()
         await ALLOWED_COLLECTION.drop()
-        await message.edit("`Deleted all allowed Pms.`")
+        await message.edit("`Deleted All Allowed PMs.`")
         return
     userid = await get_id(message)
     if userid:
@@ -101,9 +99,9 @@ async def denyToPm(message: Message):
             pmpermit.ALLOWED_CHATS.remove(userid)
         a = await ALLOWED_COLLECTION.delete_one({'_id': userid})
         if a.deleted_count:
-            await message.edit("`Prohibitted to direct message`", del_in=3)
+            await message.edit("`Prohibitted To Direct Message`", del_in=3)
         else:
-            await message.edit("`Nothing was changed`", del_in=3)
+            await message.edit("`Nothing Was Changed`", del_in=3)
     else:
         await message.edit(
             "I need to reply to a user or provide the username/id or be in a private chat",
@@ -114,9 +112,9 @@ async def denyToPm(message: Message):
     'header': "List all Allowed PM's",
     'usage': "{tr}listpm"})
 async def list_pm(msg: Message):
-    out = "`Allowed list is empty`"
+    out = "`Allowed List Is Empty`"
     if pmpermit.ALLOWED_CHATS:
-        out = "**Allowed Chats are:**\n"
+        out = "**Allowed Chats :**\n"
         for chat in pmpermit.ALLOWED_CHATS:
             out += f"\n`{chat}`"
     await msg.edit_or_send_as_file(out)
@@ -341,12 +339,12 @@ if userge.has_bot:
             user = await userge.get_users(userID)
             if userID in pmpermit.ALLOWED_CHATS:
                 await c_q.edit_message_text(
-                    f"{user.mention} already allowed to Direct Messages.")
+                    f"{user.mention} Already Allowed To Direct Messages.")
             else:
                 await c_q.edit_message_text(
-                    f"{user.mention} allowed to Direct Messages.")
+                    f"{user.mention} Allowed To Direct Messages.")
                 await userge.send_message(
-                    userID, f"{owner.mention} `approved you to Direct Messages.`")
+                    userID, f"{owner.mention} `Approved You To Direct Messages.`")
                 if userID in pmCounter:
                     del pmCounter[userID]
                 pmpermit.ALLOWED_CHATS.add(userID)
