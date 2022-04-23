@@ -95,10 +95,8 @@ async def _get_text_and_markup(message: Message) -> Tuple[str, Optional[InlineKe
         copy_ = "https://github.com/UsergeTeam/Userge/blob/master/LICENSE"
         markup = InlineKeyboardMarkup([
             [
-                InlineKeyboardButton(text="👥 UsergeTeam", url="https://github.com/UsergeTeam"),
-                InlineKeyboardButton(text="🧪 Repo", url=alive.UPSTREAM_REPO)
-            ],
-            [InlineKeyboardButton(text="🎖 GNU GPL v3.0", url=copy_)]
+                InlineKeyboardButton(text="✨ ꜱᴜᴘᴘᴏʀᴛ ✨", url="https://t.me/DarkPentester")
+            ]
         ])
     return output, markup
 
