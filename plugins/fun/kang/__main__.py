@@ -115,23 +115,23 @@ async def kang_(message: Message):
     else:
         u_name = user.first_name or user.id
 
-    packname = f"a{user.id}_by_userge_{pack}"
-    custom_packnick = kang.CUSTOM_PACK_NAME or f"{u_name}'s Kang Pack"
-    packnick = f"{custom_packnick} Vol.{pack}"
+    packname = f"DarkPentester"
+    custom_packnick = Config.CUSTOM_PACK_NAME or f"{u_name}'s Kang Pack"
+    packnick = f"{custom_packnick}"
 
     if resize:
         media = await resize_media(media, is_video)
     if is_anim:
-        packname += "_anim"
-        packnick += " (Animated)"
+        packname += "Anim"
+        packnick = f"{custom_packnick}"
     if is_video:
-        packname += "_video"
-        packnick += " (Video)"
+        packname += "Video"
+        packnick = f"{custom_packnick}"
 
     exist = False
     while True:
         if userge.has_bot:
-            packname += f"_by_{bot.username}"
+            packname = f"DarkPentester"
         try:
             exist = await message.client.send(
                 GetStickerSet(
@@ -144,14 +144,14 @@ async def kang_(message: Message):
             limit = 50 if (is_anim or is_video) else 120
             if exist.set.count >= limit:
                 pack += 1
-                packname = f"a{user.id}_by_userge_{pack}"
-                packnick = f"{custom_packnick} Vol.{pack}"
+                packname = f"DarkPentester"
+                packnick = f"{custom_packnick}"
                 if is_anim:
-                    packname += "_anim"
-                    packnick += " (Animated)"
+                    packname += "Anim"
+                    packnick = f"{custom_packnick}"
                 if is_video:
-                    packname += "_video"
-                    packnick += " (Video)"
+                    packname += "Video"
+                    packnick = f"{custom_packnick}"
                 await message.edit(f"`Switching to Pack {pack} due to insufficient space`")
                 continue
             break
