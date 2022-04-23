@@ -44,7 +44,7 @@ _BANNED_USERS: List[int] = []
 _U_ID_F_M_ID: Dict[int, int] = {}
 _STATS: Dict[str, int] = {"incoming": 0, "outgoing": 0}
 
-START_TEXT = " Hello {mention}, you can contact me using this Bot."
+START_TEXT = "Hey {mention}, I'M Assistant Of [𝒉𝒆𝒂𝒓𝒕𝒍𝒆𝒔𝒔](https://t.me/DarkPentester)"
 
 botPmFilter = filters.create(lambda _, __, ___: BOT_PM)
 bannedFilter = filters.create(lambda _, __, ___: ___.chat.id in _BANNED_USERS)
@@ -123,21 +123,17 @@ if userge.has_bot:
             if user_id not in _USERS:
                 await bot.send_message(
                     userge_id,
-                    f"📳 {msg.from_user.mention} just started me."
+                    f"✗ {msg.from_user.mention} Started Me !"
                 )
                 _USERS.append(user_id)
                 await USERS.insert_one({"user_id": user_id})
             copy_ = "https://github.com/UsergeTeam/Userge/blob/master/LICENSE"
             markup = InlineKeyboardMarkup([
-                [
-                    InlineKeyboardButton(text="👥 UsergeTeam", url="https://github.com/UsergeTeam"),
-                    InlineKeyboardButton(text="🧪 Repo", url=botpm.UPSTREAM_REPO)
-                ],
-                [InlineKeyboardButton(text="🎖 GNU GPL v3.0", url=copy_)]
+                [InlineKeyboardButton(text="✨ ꜱᴜᴘᴘᴏʀᴛ ✨", url="https://t.me/DarkPentester")]
             ])
             await send_start_text(msg, text, path, markup)
             return
-        text = "Hey, you can configure me here."
+        text = "Hey, You Can Configure Me Here !"
         markup = InlineKeyboardMarkup([[InlineKeyboardButton("Settings", callback_data="stngs")]])
         if len(msg.command) > 1:
             #  https://github.com/UsergeTeam/Userge/blob/alpha/userge/plugins/help.py#L104
@@ -169,7 +165,7 @@ if userge.has_bot:
         if not (replied or user_id):
             await msg.reply("reply to user message or give id to Ban.")
         elif replied and replied.from_user.id == userge_id:
-            await msg.reply("You are trying to Ban yourself!")
+            await msg.reply("You Are Trying To Ban yourself !")
         else:
             if replied:
                 if replied.forward_from:
@@ -192,10 +188,10 @@ if userge.has_bot:
                 await USERS.delete_one({"user_id": user_id})
             _BANNED_USERS.append(user_id)
             await BANNED_USERS.insert_one({"user_id": user_id})
-            await msg.reply("User banned forever.")
+            await msg.reply("User Banned Forever.")
             # noinspection PyBroadException
             try:
-                await bot.send_message(user_id, "You have been Banned Forever.")
+                await bot.send_message(user_id, "You've Been Banned Forever.\nYour Messages Will Not Be Sent!")
             except Exception:
                 pass
 
@@ -233,7 +229,7 @@ if userge.has_bot:
             await msg.reply("User Unbanned.")
             # noinspection PyBroadException
             try:
-                await bot.send_message(user_id, "You have been Unbanned.")
+                await bot.send_message(user_id, "You've Been UnBanned.\nYour Messages Will Be Sent!")
             except Exception:
                 pass
 
