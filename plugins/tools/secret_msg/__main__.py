@@ -133,7 +133,7 @@ async def inline_answer(_, inline_query: InlineQuery):
     prvte_msg = [[InlineKeyboardButton(
         "✗ ꜱʜᴏᴡ ᴍᴇꜱꜱᴀɢᴇ ✗", callback_data=f"prvtmsg({inline_query.id})")]]
 
-    msg_c = f" A Private Message To {'@' + user.username}, "
+    msg_c = f"✨ A Private Message To {'@' + user.username}, "
     msg_c += "Only He/She Can Open It !"
 
     results = [
