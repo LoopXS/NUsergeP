@@ -351,7 +351,7 @@ if userge.has_bot:
                 await ALLOWED_COLLECTION.update_one(
                     {'_id': userID}, {"$set": {'status': 'allowed'}}, upsert=True)
         else:
-            await c_q.answer(f"Only {owner.first_name} have access to Allow.")
+            await c_q.answer(f"Only {owner.first_name} Have Access To Allow !")
 
     @userge.bot.on_callback_query(filters.regex(pattern=r"pm_block\((.+?)\)"))
     async def pm_callback_block(_, c_q: CallbackQuery):
@@ -370,18 +370,18 @@ if userge.has_bot:
             user = await userge.get_users(userID)
             if k.deleted_count:
                 await c_q.edit_message_text(
-                    f"{user.mention} `Prohibitted to direct message`")
+                    f"{user.mention} `Prohibitted To Direct Message`")
             else:
                 await c_q.edit_message_text(
-                    f"{user.mention} `already Prohibitted to direct messages.`")
+                    f"{user.mention} `Already Prohibitted To Direct Messages.`")
         else:
-            await c_q.answer(f"Only {owner.first_name} have access to Block.")
+            await c_q.answer(f"Only {owner.first_name} Have Access To Block !")
 
     @userge.bot.on_callback_query(filters.regex(pattern=r"^pm_spam$"))
     async def pm_spam_callback(_, c_q: CallbackQuery):
         owner = await userge.get_me()
         if c_q.from_user.id == owner.id:
-            await c_q.answer("Sorry, you can't click by yourself")
+            await c_q.answer("Sorry, You Can't Click By Yourself!")
         else:
             del pmCounter[c_q.from_user.id]
             user_dict = await userge.get_user_dict(c_q.from_user.id)
@@ -390,17 +390,17 @@ if userge.has_bot:
             await userge.block_user(c_q.from_user.id)
             await asyncio.sleep(1)
             await CHANNEL.log(
-                f"#BLOCKED\n{c_q.from_user.mention} has been blocked due to spamming in pm !! ")
+                f"#BLOCKED\n{c_q.from_user.mention} Has Been Blocked Due To Spamming In Pm !! ")
 
     @userge.bot.on_callback_query(filters.regex(pattern=r"^pm_contact$"))
     async def pm_contact_callback(_, c_q: CallbackQuery):
         owner = await userge.get_me()
         if c_q.from_user.id == owner.id:
-            await c_q.answer("Sorry, you can't click by yourself")
+            await c_q.answer("Sorry, You Can't Click By Yourself!")
         else:
             user_dict = await userge.get_user_dict(c_q.from_user.id)
             await c_q.edit_message_text(
-                noPmMessage.format_map(SafeDict(**user_dict)) + '\n`- Protected by userge`')
+                noPmMessage.format_map(SafeDict(**user_dict)))
             buttons = InlineKeyboardMarkup(
                 [
                     [
@@ -413,7 +413,7 @@ if userge.has_bot:
             )
             await userge.bot.send_message(
                 owner.id,
-                f"{c_q.from_user.mention} wanna contact to you.",
+                f"{c_q.from_user.mention} Wanna Contact To You.",
                 reply_markup=buttons
             )
 
@@ -439,16 +439,16 @@ if userge.has_bot:
             text = f"Hello, welcome to **{owner.first_name}** Dm.\n\nWhat you want to do ?"
         buttons = [[
             InlineKeyboardButton(
-                "Contact Me", callback_data="pm_contact"),
+                "✗ ᴄᴏɴᴛᴀᴄᴛ ✗", callback_data="pm_contact"),
             InlineKeyboardButton(
-                "Spam here", callback_data="pm_spam")]]
+                "✗ ꜱᴘᴀᴍ ✗", callback_data="pm_spam")]]
         results.append(
             InlineQueryResultArticle(
                 id=uuid4(),
                 title="Pm Permit",
                 input_message_content=InputTextMessageContent(text),
                 description="Inline Pm Permit Handler",
-                thumb_url="https://imgur.com/download/Inyeb1S",
+                thumb_url="https://telegra.ph/file/2def97874a6005606d5a4.jpg",
                 reply_markup=InlineKeyboardMarkup(buttons)
             )
         )
