@@ -92,11 +92,11 @@ async def invite_link(message: Message):
             if chat.type in ['group', 'supergroup']:
                 link = await userge.export_chat_invite_link(chat_id)
                 await message.edit(
-                    "**Invite link Generated Successfully for\n"
-                    f"{chat_name}**\n[Click here to join]({link})",
+                    "**Invite link For "
+                    f"{chat_name}**\n[Click Here To Join]({link})",
                     disable_web_page_preview=True)
             else:
-                await message.err("Requirements doesn't met...")
+                await message.err("Requirements Doesn't Met...")
         except Exception as e_f:
             await message.err(e_f)
     else:
