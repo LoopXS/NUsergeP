@@ -70,7 +70,7 @@ async def url_download(message: Message, url: str) -> Tuple[str, int]:
                 raise Exception("given tg link doesn't have any media")
             return output
         raise Exception("invalid telegram message link!")
-    await message.edit("`Downloading From URL...`")
+    await message.edit("`ⲇⲟⲱⲛⳑⲟⲁⲇⲓⲛⳋ ϝʀⲟⲙ υʀⳑ ...`")
     start_t = datetime.now()
     custom_file_name = unquote_plus(os.path.basename(url))
     if "|" in url:
