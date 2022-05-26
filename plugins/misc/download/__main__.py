@@ -28,7 +28,7 @@ async def down_load_media(message: Message):
     elif message.input_str:
         resource = message.input_str
     else:
-        await message.err("nothing found to download")
+        await message.err("ⲛⲟⲧⲏⲓⲛⳋ ϝⲟυⲛⲇ ⲧⲟ ⲇⲟⲱⲛⳑⲟⲁⲇ !")
         return
     try:
         dl_loc, d_in = await download.handle_download(message, resource)
@@ -37,4 +37,4 @@ async def down_load_media(message: Message):
     except Exception as e_e:  # pylint: disable=broad-except
         await message.err(str(e_e))
     else:
-        await message.edit(f"Downloaded to `{dl_loc}` in {d_in} seconds")
+        await message.edit(f"Ⲇⲟⲱⲛⳑⲟⲁⲇⲉⲇ ⲧⲟ `{dl_loc}` ⲓⲛ {d_in} ⲋⲉⲥⲟⲛⲇⲋ")
