@@ -93,7 +93,7 @@ output += f"""
 **✗ ⳳⲉʀⲋⲓⲟⲛ ➛** `1.7`
 **✗ ⲙⲟⲇⲉ ➛** `Dual`
 ≺━━━━━━━━ - ━━━━━━━≻
-**✗ ⲋυⲇⲟ ➛** `{_parse_arg(sudo.Dynamic.ENABLED)}`"""
+**✗ ⲋυⲇⲟ ➛** `{_parse_arg(sudo.Dynamic.ENABLED)}`
 **✗ ⲣⲩⲧⲏⲟⲛ ➛** `{ver.__python_version__}`
 **✗ ⲣⲩʀⲟⳋʀⲁⲙ ➛** `{ver.__pyro_version__}`
 ≺━━━━━━━━ - ━━━━━━━≻
