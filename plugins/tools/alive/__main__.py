@@ -81,10 +81,9 @@ async def _get_text_and_markup(message: Message) -> Tuple[str, Optional[InlineKe
 output += f"""
 **✗ ⲣⲩⲧⲏⲟⲛ ➛** `{ver.__python_version__}`
 **✗ ⲣⲩʀⲟⳋʀⲁⲙ ➛** `{ver.__pyro_version__}`
-≺━━━━━━━━ - ━━━━━━━≻"""
+≺━━━━━━━━ - ━━━━━━━≻
+🎭 T.me/DarkPentester**"""
     if not message.client.is_bot:
-        output += f"\n🎭 T.me/DarkPentester**"
-    else:
         outputr = f"""
 **✦ ⲏⲉⲁʀⲧⳑⲉⲋⲋ ᥱ᥊ᥴᥣᥙsi᥎ᥱ ⲃⲟⲧ**
 ≺━━━━━━━━ - ━━━━━━━≻
