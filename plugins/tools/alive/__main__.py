@@ -71,22 +71,18 @@ def _get_mode() -> str:
 async def _get_text_and_markup(message: Message) -> Tuple[str, Optional[InlineKeyboardMarkup]]:
     markup = None
     output = f"""
-**⏱ Uptime** : `{userge.uptime}`
-**💡 Version** : `{await ver.get_full_version()}`
-**⚙️ Mode** : `{_get_mode().upper()}`
+**✦ ⲏⲉⲁʀⲧⳑⲉⲋⲋ ᥱ᥊ᥴᥣᥙsi᥎ᥱ ⲃⲟⲧ**
+≺━━━━━━━━ - ━━━━━━━≻
+**✗ υⲣⲧⲓⲙⲉ ➛** `{userge.uptime}`
+**✗ ⳳⲉʀⲋⲓⲟⲛ ➛** `1.7`
+**✗ ⲙⲟⲇⲉ ➛** `Dual`
+≺━━━━━━━━ - ━━━━━━━≻
+**✗ ⲋυⲇⲟ**: `{_parse_arg(sudo.Dynamic.ENABLED)}`"""
+output += f"""
 
-• **Sudo**: `{_parse_arg(sudo.Dynamic.ENABLED)}`"""
-    if pmpermit is not None:
-        output += f"\n• **Pm-Guard**: `{_parse_arg(not pmpermit.Dynamic.ALLOW_ALL_PMS)}`"
-    if antispam is not None:
-        output += f"\n• **Anti-Spam**: `{_parse_arg(antispam.Dynamic.ANTISPAM_SENTRY)}`"
-    if config.HEROKU_APP:
-        output += f"\n• **Dyno-saver**: `{_parse_arg(system.Dynamic.RUN_DYNO_SAVER)}`"
-    output += f"""
-
-    **__Python__**: `{ver.__python_version__}`
-    **__Pyrogram__**: `{ver.__pyro_version__}`
-    **__Loader__**: `{ver.__loader_version__}`"""
+**✗ ⲣⲩⲧⲏⲟⲛ ➛**: `{ver.__python_version__}`
+**✗ ⲣⲩʀⲟⳋʀⲁⲙ ➛**: `{ver.__pyro_version__}`
+**__Loader__**: `{ver.__loader_version__}`"""
     if not message.client.is_bot:
         output += f"""\n
 🎖 **{ver.__license__}** | 👥 **{ver.__copyright__}** | 🧪 **[Repo]({alive.UPSTREAM_REPO})**
