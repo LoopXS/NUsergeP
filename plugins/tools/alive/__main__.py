@@ -77,26 +77,37 @@ async def _get_text_and_markup(message: Message) -> Tuple[str, Optional[InlineKe
 **✗ ⳳⲉʀⲋⲓⲟⲛ ➛** `1.7`
 **✗ ⲙⲟⲇⲉ ➛** `Dual`
 ≺━━━━━━━━ - ━━━━━━━≻
-**✗ ⲋυⲇⲟ**: `{_parse_arg(sudo.Dynamic.ENABLED)}`"""
+**✗ ⲋυⲇⲟ ➛** `{_parse_arg(sudo.Dynamic.ENABLED)}`"""
 output += f"""
-
-**✗ ⲣⲩⲧⲏⲟⲛ ➛**: `{ver.__python_version__}`
-**✗ ⲣⲩʀⲟⳋʀⲁⲙ ➛**: `{ver.__pyro_version__}`
-**__Loader__**: `{ver.__loader_version__}`"""
+**✗ ⲣⲩⲧⲏⲟⲛ ➛** `{ver.__python_version__}`
+**✗ ⲣⲩʀⲟⳋʀⲁⲙ ➛** `{ver.__pyro_version__}`
+≺━━━━━━━━ - ━━━━━━━≻"""
     if not message.client.is_bot:
         output += f"""\n
-🎖 **{ver.__license__}** | 👥 **{ver.__copyright__}** | 🧪 **[Repo]({alive.UPSTREAM_REPO})**
+🎭 T.me/DarkPentester**
 """
+    outputr = f"""
+**✦ ⲏⲉⲁʀⲧⳑⲉⲋⲋ ᥱ᥊ᥴᥣᥙsi᥎ᥱ ⲃⲟⲧ**
+≺━━━━━━━━ - ━━━━━━━≻
+**✗ υⲣⲧⲓⲙⲉ ➛** `{userge.uptime}`
+**✗ ⳳⲉʀⲋⲓⲟⲛ ➛** `1.7`
+**✗ ⲙⲟⲇⲉ ➛** `Dual`
+≺━━━━━━━━ - ━━━━━━━≻
+**✗ ⲋυⲇⲟ ➛** `{_parse_arg(sudo.Dynamic.ENABLED)}`"""
+**✗ ⲣⲩⲧⲏⲟⲛ ➛** `{ver.__python_version__}`
+**✗ ⲣⲩʀⲟⳋʀⲁⲙ ➛** `{ver.__pyro_version__}`
+≺━━━━━━━━ - ━━━━━━━≻
+🎭 T.me/DarkPentester**"""
     else:
-        copy_ = "https://github.com/UsergeTeam/Userge/blob/master/LICENSE"
+        copy_ = "https://xhamster.com/"
         markup = InlineKeyboardMarkup([
             [
-                InlineKeyboardButton(text="👥 UsergeTeam", url="https://github.com/UsergeTeam"),
-                InlineKeyboardButton(text="🧪 Repo", url=alive.UPSTREAM_REPO)
+                InlineKeyboardButton(text="• ᴅᴇᴠᴇʟᴏᴘᴇʀ •", url="https://t.me/DarkPentester"),
+                InlineKeyboardButton(text="• ᴀꜱꜱɪꜱᴛᴀɴᴛ •", url="DarkPentesterBot")
             ],
-            [InlineKeyboardButton(text="🎖 GNU GPL v3.0", url=copy_)]
+            [InlineKeyboardButton(text="• ʀᴇᴘᴏ •, url=copy_)]
         ])
-    return output, markup
+    return outputr, markup
 
 
 def _parse_arg(arg: bool) -> str:
