@@ -83,7 +83,7 @@ async def _get_text_and_markup(message: Message) -> Tuple[str, Optional[InlineKe
 **✗ ⲣⲩʀⲟⳋʀⲁⲙ ➛** `{ver.__pyro_version__}`
 ≺━━━━━━━━ - ━━━━━━━≻"""
     if not message.client.is_bot:
-        output += f"""\n
+        output += f"""
 🎭 T.me/DarkPentester
 """
     else:
