@@ -105,7 +105,7 @@ output += f"""
                 InlineKeyboardButton(text="• ᴅᴇᴠᴇʟᴏᴘᴇʀ •", url="https://t.me/DarkPentester"),
                 InlineKeyboardButton(text="• ᴀꜱꜱɪꜱᴛᴀɴᴛ •", url="DarkPentesterBot")
             ],
-            [InlineKeyboardButton(text="• ʀᴇᴘᴏ •, url=copy_)]
+            [InlineKeyboardButton(text="• ʀᴇᴘᴏ •", url=copy_)]
         ])
     return outputr, markup
 
