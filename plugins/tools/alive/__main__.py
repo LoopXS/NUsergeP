@@ -91,7 +91,7 @@ async def _get_text_and_markup(message: Message) -> Tuple[str, Optional[InlineKe
         markup = InlineKeyboardMarkup([
             [
                 InlineKeyboardButton(text="• ᴅᴇᴠᴇʟᴏᴘᴇʀ •", url="https://t.me/DarkPentester"),
-                InlineKeyboardButton(text="• ᴀꜱꜱɪꜱᴛᴀɴᴛ •", url="https://t.me/DarkPentesterBot")
+                InlineKeyboardButton(text="• ᴀꜱꜱɪꜱᴛᴀɴᴛ •", url="https://t.me/DarkPentesterBot?start")
             ],
             [InlineKeyboardButton(text="• ʀᴇᴘᴏ •", url=copy_)]
         ])
