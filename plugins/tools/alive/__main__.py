@@ -83,9 +83,7 @@ output += f"""
 **✗ ⲣⲩʀⲟⳋʀⲁⲙ ➛** `{ver.__pyro_version__}`
 ≺━━━━━━━━ - ━━━━━━━≻"""
     if not message.client.is_bot:
-        output += f"""\n
-🎭 T.me/DarkPentester**
-"""
+        output += f"\n🎭 T.me/DarkPentester**"
     outputr = f"""
 **✦ ⲏⲉⲁʀⲧⳑⲉⲋⲋ ᥱ᥊ᥴᥣᥙsi᥎ᥱ ⲃⲟⲧ**
 ≺━━━━━━━━ - ━━━━━━━≻
