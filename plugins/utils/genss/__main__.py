@@ -31,7 +31,7 @@ async def ss_gen(message: Message):
     vid_loc = ''
     ss_c = 5
     should_clean = False
-    await message.edit("Checking you Input?🧐🤔😳")
+    await message.edit("Checking you Input...")
     if message.input_str:
         if ' ' in message.input_str:
             ss_c, vid_loc = message.input_str.split(" ", 1)
@@ -54,7 +54,7 @@ async def ss_gen(message: Message):
             message=replied,
             file_name=config.Dynamic.DOWN_PATH,
             progress=progress,
-            progress_args=(message, "Downloading🧐? W8 plox")
+            progress_args=(message, "Downloading W8 Plox")
         )
         vid_loc = os.path.join(config.Dynamic.DOWN_PATH, os.path.basename(vid))
         should_clean = True

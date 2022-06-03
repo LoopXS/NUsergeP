@@ -30,10 +30,8 @@ ALLOWED_COLLECTION = get_collection("PM_PERMIT")
 
 pmCounter: Dict[int, int] = {}
 allowAllFilter = filters.create(lambda _, __, ___: pmpermit.Dynamic.ALLOW_ALL_PMS)
-noPmMessage = bk_noPmMessage = ("Hello {fname} this is an automated message\n"
-                                "Please wait until you get approved to direct message "
-                                "And please dont spam until then ")
-blocked_message = bk_blocked_message = "**You were automatically blocked**"
+noPmMessage = bk_noPmMessage = ("🎭 This Is 𝒉𝒆𝒂𝒓𝒕𝒍𝒆𝒔𝒔 PM Protection 🎭\n➰ Pls Wait Till I Approve You To PM\n➰ Don't Spam Inbox(4) Cause,\n➰ You'll Get Blocked & Reported !")
+blocked_message = bk_blocked_message = "`You Were Automatically Blocked !`"
 
 
 @userge.on_start
@@ -71,10 +69,10 @@ async def allow(message: Message):
         a = await ALLOWED_COLLECTION.update_one(
             {'_id': userid}, {"$set": {'status': 'allowed'}}, upsert=True)
         if a.matched_count:
-            await message.edit("`Already approved to direct message`", del_in=3)
+            await message.edit("`Already Approved To Direct Message`", del_in=3)
         else:
             await (await userge.get_users(userid)).unblock()
-            await message.edit("`Approved to direct message`", del_in=3)
+            await message.edit("`Approved To Direct Message`", del_in=3)
     else:
         await message.edit(
             "I need to reply to a user or provide the username/id or be in a private chat",
@@ -93,7 +91,7 @@ async def denyToPm(message: Message):
     if message.flags and '-all' in message.flags:
         pmpermit.ALLOWED_CHATS.clear()
         await ALLOWED_COLLECTION.drop()
-        await message.edit("`Deleted all allowed Pms.`")
+        await message.edit("`Deleted All Allowed PMs.`")
         return
     userid = await get_id(message)
     if userid:
@@ -101,9 +99,9 @@ async def denyToPm(message: Message):
             pmpermit.ALLOWED_CHATS.remove(userid)
         a = await ALLOWED_COLLECTION.delete_one({'_id': userid})
         if a.deleted_count:
-            await message.edit("`Prohibitted to direct message`", del_in=3)
+            await message.edit("`Prohibitted To Direct Message`", del_in=3)
         else:
-            await message.edit("`Nothing was changed`", del_in=3)
+            await message.edit("`Nothing Was Changed`", del_in=3)
     else:
         await message.edit(
             "I need to reply to a user or provide the username/id or be in a private chat",
@@ -114,9 +112,9 @@ async def denyToPm(message: Message):
     'header': "List all Allowed PM's",
     'usage': "{tr}listpm"})
 async def list_pm(msg: Message):
-    out = "`Allowed list is empty`"
+    out = "`Allowed List Is Empty`"
     if pmpermit.ALLOWED_CHATS:
-        out = "**Allowed Chats are:**\n"
+        out = "**Allowed Chats :**\n"
         for chat in pmpermit.ALLOWED_CHATS:
             out += f"\n`{chat}`"
     await msg.edit_or_send_as_file(out)
@@ -341,19 +339,19 @@ if userge.has_bot:
             user = await userge.get_users(userID)
             if userID in pmpermit.ALLOWED_CHATS:
                 await c_q.edit_message_text(
-                    f"{user.mention} already allowed to Direct Messages.")
+                    f"{user.mention} Already Allowed To Direct Messages.")
             else:
                 await c_q.edit_message_text(
-                    f"{user.mention} allowed to Direct Messages.")
+                    f"{user.mention} Allowed To Direct Messages.")
                 await userge.send_message(
-                    userID, f"{owner.mention} `approved you to Direct Messages.`")
+                    userID, f"{owner.mention} `Approved You To Direct Messages.`")
                 if userID in pmCounter:
                     del pmCounter[userID]
                 pmpermit.ALLOWED_CHATS.add(userID)
                 await ALLOWED_COLLECTION.update_one(
                     {'_id': userID}, {"$set": {'status': 'allowed'}}, upsert=True)
         else:
-            await c_q.answer(f"Only {owner.first_name} have access to Allow.")
+            await c_q.answer(f"Only {owner.first_name} Have Access To Allow !")
 
     @userge.bot.on_callback_query(filters.regex(pattern=r"pm_block\((.+?)\)"))
     async def pm_callback_block(_, c_q: CallbackQuery):
@@ -372,18 +370,18 @@ if userge.has_bot:
             user = await userge.get_users(userID)
             if k.deleted_count:
                 await c_q.edit_message_text(
-                    f"{user.mention} `Prohibitted to direct message`")
+                    f"{user.mention} `Prohibitted To Direct Message`")
             else:
                 await c_q.edit_message_text(
-                    f"{user.mention} `already Prohibitted to direct messages.`")
+                    f"{user.mention} `Already Prohibitted To Direct Messages.`")
         else:
-            await c_q.answer(f"Only {owner.first_name} have access to Block.")
+            await c_q.answer(f"Only {owner.first_name} Have Access To Block !")
 
     @userge.bot.on_callback_query(filters.regex(pattern=r"^pm_spam$"))
     async def pm_spam_callback(_, c_q: CallbackQuery):
         owner = await userge.get_me()
         if c_q.from_user.id == owner.id:
-            await c_q.answer("Sorry, you can't click by yourself")
+            await c_q.answer("Sorry, You Can't Click By Yourself!")
         else:
             del pmCounter[c_q.from_user.id]
             user_dict = await userge.get_user_dict(c_q.from_user.id)
@@ -392,17 +390,17 @@ if userge.has_bot:
             await userge.block_user(c_q.from_user.id)
             await asyncio.sleep(1)
             await CHANNEL.log(
-                f"#BLOCKED\n{c_q.from_user.mention} has been blocked due to spamming in pm !! ")
+                f"#BLOCKED\n{c_q.from_user.mention} Has Been Blocked Due To Spamming In Pm !! ")
 
     @userge.bot.on_callback_query(filters.regex(pattern=r"^pm_contact$"))
     async def pm_contact_callback(_, c_q: CallbackQuery):
         owner = await userge.get_me()
         if c_q.from_user.id == owner.id:
-            await c_q.answer("Sorry, you can't click by yourself")
+            await c_q.answer("Sorry, You Can't Click By Yourself!")
         else:
             user_dict = await userge.get_user_dict(c_q.from_user.id)
             await c_q.edit_message_text(
-                noPmMessage.format_map(SafeDict(**user_dict)) + '\n`- Protected by userge`')
+                noPmMessage.format_map(SafeDict(**user_dict)))
             buttons = InlineKeyboardMarkup(
                 [
                     [
@@ -415,7 +413,7 @@ if userge.has_bot:
             )
             await userge.bot.send_message(
                 owner.id,
-                f"{c_q.from_user.mention} wanna contact to you.",
+                f"{c_q.from_user.mention} Wanna Contact To You.",
                 reply_markup=buttons
             )
 
@@ -441,16 +439,16 @@ if userge.has_bot:
             text = f"Hello, welcome to **{owner.first_name}** Dm.\n\nWhat you want to do ?"
         buttons = [[
             InlineKeyboardButton(
-                "Contact Me", callback_data="pm_contact"),
+                "✗ ᴄᴏɴᴛᴀᴄᴛ ✗", callback_data="pm_contact"),
             InlineKeyboardButton(
-                "Spam here", callback_data="pm_spam")]]
+                "✗ ꜱᴘᴀᴍ ✗", callback_data="pm_spam")]]
         results.append(
             InlineQueryResultArticle(
                 id=uuid4(),
                 title="Pm Permit",
                 input_message_content=InputTextMessageContent(text),
                 description="Inline Pm Permit Handler",
-                thumb_url="https://imgur.com/download/Inyeb1S",
+                thumb_url="https://telegra.ph/file/2def97874a6005606d5a4.jpg",
                 reply_markup=InlineKeyboardMarkup(buttons)
             )
         )

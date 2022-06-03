@@ -70,7 +70,7 @@ async def url_download(message: Message, url: str) -> Tuple[str, int]:
                 raise Exception("given tg link doesn't have any media")
             return output
         raise Exception("invalid telegram message link!")
-    await message.edit("`Downloading From URL...`")
+    await message.edit("`ⲇⲟⲱⲛⳑⲟⲁⲇⲓⲛⳋ ϝʀⲟⲙ υʀⳑ ...`")
     start_t = datetime.now()
     custom_file_name = unquote_plus(os.path.basename(url))
     if "|" in url:
@@ -91,15 +91,15 @@ async def url_download(message: Message, url: str) -> Tuple[str, int]:
             progress_str = \
                 "__{}__\n" + \
                 "```[{}{}]```\n" + \
-                "**Progress** : `{}%`\n" + \
-                "**URL** : `{}`\n" + \
-                "**FILENAME** : `{}`\n" + \
-                "**Completed** : `{}`\n" + \
-                "**Total** : `{}`\n" + \
-                "**Speed** : `{}`\n" + \
-                "**ETA** : `{}`"
+                "ⲣʀⲟⳋʀⲉⲋⲋ ➛ `{}%`\n" + \
+                "υʀⳑ ➛ `{}`\n" + \
+                "ϝⲓⳑⲉⲛⲁⲙⲉ ➛ `{}`\n" + \
+                "ⲥⲟⲙⲣⳑⲉⲧⲉⲇ ➛ `{}`\n" + \
+                "ⲧⲟⲧⲁⳑ ➛ `{}`\n" + \
+                "ⲋⲣⲉⲉⲇ ➛ `{}`\n" + \
+                "ⲉⲧⲁ ➛ `{}`"
             progress_str = progress_str.format(
-                "trying to download",
+                "ⲧʀⲩⲓⲛⳋ ⲧⲟ ⲇⲟⲱⲛⳑⲟⲁⲇ",
                 ''.join((config.FINISHED_PROGRESS_STR
                          for _ in range(math.floor(percentage / 5)))),
                 ''.join((config.UNFINISHED_PROGRESS_STR
@@ -132,7 +132,7 @@ async def tg_download(
             dl_loc.append(_dl_loc)
             mite += b_
         return dumps(dl_loc), mite
-    await message.edit("`Downloading From TG...`")
+    await message.edit("`ⲇⲟⲱⲛⳑⲟⲁⲇⲓⲛⳋ ϝʀⲟⲙ ⲧⳋ ...`")
     start_t = datetime.now()
     custom_file_name = config.Dynamic.DOWN_PATH
     if message.filtered_input_str and not from_url:

@@ -79,8 +79,8 @@ async def translateme(message: Message):
             return
     source_lan = LANGUAGES[f'{reply_text.src.lower()}']
     transl_lan = LANGUAGES[f'{reply_text.dest.lower()}']
-    output = f"**Source ({source_lan.title()}):**`\n{text}`\n\n\
-**Translation ({transl_lan.title()}):**\n`{reply_text.text}`"
+    output = f"**ⲋⲟυʀⲥⲉ ({source_lan.title()}):**`\n{text}`\n\n\
+**ⲧʀⲁⲛⲋⳑⲁⲧⲓⲟⲛ ({transl_lan.title()}):**\n`{reply_text.text}`"
     await message.edit_or_send_as_file(text=output, caption="translated")
 
 

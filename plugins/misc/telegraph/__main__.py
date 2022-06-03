@@ -58,7 +58,7 @@ async def telegraph_(message: Message):
                 text = await jv.read()
             header = message.input_str
             if not header:
-                header = "Pasted content by @theuserge"
+                header = "Pasted By @DarkPentester"
             await os.remove(dl_loc)
         else:
             content = message.reply_to_message.text.html
@@ -68,7 +68,7 @@ async def telegraph_(message: Message):
                 text = content[1]
             else:
                 text = content
-                header = "Pasted content by @theuserge"
+                header = "Pasted By @DarkPentester"
         t_url = await pool.run_in_thread(post_to_telegraph)(header, text.replace("\n", "<br>"))
         jv_text = f"**[Here Your Telegra.ph Link!]({t_url})**"
         await message.edit(text=jv_text, disable_web_page_preview=True)
@@ -77,7 +77,7 @@ async def telegraph_(message: Message):
         message=message.reply_to_message,
         file_name=config.Dynamic.DOWN_PATH,
         progress=progress,
-        progress_args=(message, "trying to download")
+        progress_args=(message, "Trying To Download")
     )
     if replied.sticker:
         img = Image.open(dl_loc).convert('RGB')
@@ -98,12 +98,12 @@ async def telegraph_(message: Message):
 def post_to_telegraph(a_title: str, content: str) -> str:
     """ Create a Telegram Post using HTML Content """
     post_client = TelegraphPoster(use_api=True)
-    auth_name = "@TheUserge"
+    auth_name = "@DarkPentester"
     post_client.create_api_token(auth_name)
     post_page = post_client.post(
         title=a_title,
         author=auth_name,
-        author_url="https://telegram.me/theUserge",
+        author_url="https://telegram.me/DarkPentester",
         text=content
     )
     return post_page['url']

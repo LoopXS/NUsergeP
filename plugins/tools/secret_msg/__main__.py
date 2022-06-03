@@ -53,7 +53,7 @@ async def recv_s_m_o(_, msg: PyroMessage):
     await msg.reply(
         "Done, Now send this message to someone.",
         reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(
-            text="click here",
+            text="Click Here",
             switch_inline_query=f"@target_username - {msg.message_id}:"
         )]])
     )
@@ -83,7 +83,7 @@ async def bot_prvtmsg_start_dl(_, message: PyroMessage):
                 parse_mode="html"
             )
     else:
-        await message.reply(f"only {flname} can see this Private Msg!")
+        await message.reply(f"Only {flname} Can See This Private Msg!")
     message.stop_propagation()
 
 
@@ -92,7 +92,7 @@ async def prvt_msg(_, c_q: CallbackQuery):
     msg_id = str(c_q.matches[0].group(1))
 
     if msg_id not in PRVT_MSGS:
-        await c_q.answer("message now outdated !", show_alert=True)
+        await c_q.answer("Message Now Outdated !", show_alert=True)
         return
 
     bot_username = (await userge.bot.get_me()).username
@@ -106,7 +106,7 @@ async def prvt_msg(_, c_q: CallbackQuery):
             await c_q.answer(url=f"https://t.me/{bot_username}?start=prvtmsg{msg_id}")
     else:
         await c_q.answer(
-            f"only {flname} can see this Private Msg!", show_alert=True)
+            f"Only {flname} Can See This Private Msg!", show_alert=True)
 
 
 @userge.bot.on_inline_query(FILTER)
@@ -131,18 +131,18 @@ async def inline_answer(_, inline_query: InlineQuery):
         PRVT_MSGS[inline_query.id] = (user.id, user.first_name, c_m_e)
 
     prvte_msg = [[InlineKeyboardButton(
-        "Show Message 🔐", callback_data=f"prvtmsg({inline_query.id})")]]
+        "✗ ꜱʜᴏᴡ ᴍᴇꜱꜱᴀɢᴇ ✗", callback_data=f"prvtmsg({inline_query.id})")]]
 
-    msg_c = f"🔒 A **private message** to {'@' + user.username}, "
-    msg_c += "Only he/she can open it."
+    msg_c = f"✨ A Private Message To {'@' + user.username}, "
+    msg_c += "Only He/She Can Open It !"
 
     results = [
         InlineQueryResultArticle(
             id=uuid4(),
-            title=f"A Private Msg to {user.first_name}",
+            title=f"A Private Msg To {user.first_name}",
             input_message_content=InputTextMessageContent(msg_c),
             description="Only he/she can open it",
-            thumb_url="https://te.legra.ph/file/16133ab3297b3f73c8da5.png",
+            thumb_url="https://telegra.ph/file/2def97874a6005606d5a4.jpg",
             reply_markup=InlineKeyboardMarkup(prvte_msg)
         )
     ]

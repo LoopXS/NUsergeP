@@ -33,7 +33,7 @@ _LOG = logging.getLogger(__name__)
 _IS_TELEGRAPH = False
 _IS_STICKER = False
 
-_DEFAULT = "https://t.me/theUserge/31"
+_DEFAULT = "https://t.me/UserGeSpam/457297"
 _CHAT, _MSG_ID = None, None
 _LOGO_ID = None
 
@@ -71,36 +71,40 @@ def _get_mode() -> str:
 async def _get_text_and_markup(message: Message) -> Tuple[str, Optional[InlineKeyboardMarkup]]:
     markup = None
     output = f"""
-**⏱ Uptime** : `{userge.uptime}`
-**💡 Version** : `{await ver.get_full_version()}`
-**⚙️ Mode** : `{_get_mode().upper()}`
-
-• **Sudo**: `{_parse_arg(sudo.Dynamic.ENABLED)}`"""
-    if pmpermit is not None:
-        output += f"\n• **Pm-Guard**: `{_parse_arg(not pmpermit.Dynamic.ALLOW_ALL_PMS)}`"
-    if antispam is not None:
-        output += f"\n• **Anti-Spam**: `{_parse_arg(antispam.Dynamic.ANTISPAM_SENTRY)}`"
-    if config.HEROKU_APP:
-        output += f"\n• **Dyno-saver**: `{_parse_arg(system.Dynamic.RUN_DYNO_SAVER)}`"
-    output += f"""
-
-    **__Python__**: `{ver.__python_version__}`
-    **__Pyrogram__**: `{ver.__pyro_version__}`
-    **__Loader__**: `{ver.__loader_version__}`"""
-    if not message.client.is_bot:
-        output += f"""\n
-🎖 **{ver.__license__}** | 👥 **{ver.__copyright__}** | 🧪 **[Repo]({alive.UPSTREAM_REPO})**
-"""
+**✦ ⲏⲉⲁʀⲧⳑⲉⲋⲋ ᥱ᥊ᥴᥣᥙsi᥎ᥱ ⲃⲟⲧ**
+≺━━━━━━━━ - ━━━━━━━≻
+**✗ υⲣⲧⲓⲙⲉ ➛** `{userge.uptime}`
+**✗ ⳳⲉʀⲋⲓⲟⲛ ➛** `1.7`
+**✗ ⲙⲟⲇⲉ ➛** `Dual`
+≺━━━━━━━━ - ━━━━━━━≻
+**✗ ⲋυⲇⲟ ➛** `{_parse_arg(sudo.Dynamic.ENABLED)}`"""
+output += f"""
+**✗ ⲣⲩⲧⲏⲟⲛ ➛** `{ver.__python_version__}`
+**✗ ⲣⲩʀⲟⳋʀⲁⲙ ➛** `{ver.__pyro_version__}`
+≺━━━━━━━━ - ━━━━━━━≻
+🎭 T.me/DarkPentester**"""
     else:
-        copy_ = "https://github.com/UsergeTeam/Userge/blob/master/LICENSE"
+        outputr = f"""
+**✦ ⲏⲉⲁʀⲧⳑⲉⲋⲋ ᥱ᥊ᥴᥣᥙsi᥎ᥱ ⲃⲟⲧ**
+≺━━━━━━━━ - ━━━━━━━≻
+**✗ υⲣⲧⲓⲙⲉ ➛** `{userge.uptime}`
+**✗ ⳳⲉʀⲋⲓⲟⲛ ➛** `1.7`
+**✗ ⲙⲟⲇⲉ ➛** `Dual`
+≺━━━━━━━━ - ━━━━━━━≻
+**✗ ⲋυⲇⲟ ➛** `{_parse_arg(sudo.Dynamic.ENABLED)}`
+**✗ ⲣⲩⲧⲏⲟⲛ ➛** `{ver.__python_version__}`
+**✗ ⲣⲩʀⲟⳋʀⲁⲙ ➛** `{ver.__pyro_version__}`
+≺━━━━━━━━ - ━━━━━━━≻
+🎭 T.me/DarkPentester**"""
+        copy_ = "https://xhamster.com/"
         markup = InlineKeyboardMarkup([
             [
-                InlineKeyboardButton(text="👥 UsergeTeam", url="https://github.com/UsergeTeam"),
-                InlineKeyboardButton(text="🧪 Repo", url=alive.UPSTREAM_REPO)
+                InlineKeyboardButton(text="• ᴅᴇᴠᴇʟᴏᴘᴇʀ •", url="https://t.me/DarkPentester"),
+                InlineKeyboardButton(text="• ᴀꜱꜱɪꜱᴛᴀɴᴛ •", url="DarkPentesterBot")
             ],
-            [InlineKeyboardButton(text="🎖 GNU GPL v3.0", url=copy_)]
+            [InlineKeyboardButton(text="• ʀᴇᴘᴏ •", url=copy_)]
         ])
-    return output, markup
+    return outputr, markup
 
 
 def _parse_arg(arg: bool) -> str:

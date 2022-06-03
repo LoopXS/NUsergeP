@@ -29,10 +29,10 @@ async def create_channel(message: Message):
         if '|' in args:
             title, des = args.split('|', maxsplit=1)
         else:
-            title, des = args, "This channel is created using @TheUserge"
+            title, des = args, "~ @DarkPentester"
         if len(des) > 256:
             des = des.strip()[:253] + "..."
         await userge.create_channel(title.strip(), des.strip())
-        await message.edit(f"Successfully made a new channel **{title.strip()}**")
+        await message.edit(f"Successfully Made A New Channel **{title.strip()}**")
     except Exception as e:
         await message.err(str(e))
