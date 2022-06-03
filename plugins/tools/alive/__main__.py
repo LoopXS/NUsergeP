@@ -78,33 +78,24 @@ async def _get_text_and_markup(message: Message) -> Tuple[str, Optional[InlineKe
 **✗ ⲙⲟⲇⲉ ➛** `Dual`
 ≺━━━━━━━━ - ━━━━━━━≻
 **✗ ⲋυⲇⲟ ➛** `{_parse_arg(sudo.Dynamic.ENABLED)}`"""
-output += f"""
+    output += f"""
 **✗ ⲣⲩⲧⲏⲟⲛ ➛** `{ver.__python_version__}`
 **✗ ⲣⲩʀⲟⳋʀⲁⲙ ➛** `{ver.__pyro_version__}`
-≺━━━━━━━━ - ━━━━━━━≻
-🎭 T.me/DarkPentester**"""
+≺━━━━━━━━ - ━━━━━━━≻"""
+    if not message.client.is_bot:
+        output += f"""\n
+🎭 T.me/DarkPentester
+"""
     else:
-        outputr = f"""
-**✦ ⲏⲉⲁʀⲧⳑⲉⲋⲋ ᥱ᥊ᥴᥣᥙsi᥎ᥱ ⲃⲟⲧ**
-≺━━━━━━━━ - ━━━━━━━≻
-**✗ υⲣⲧⲓⲙⲉ ➛** `{userge.uptime}`
-**✗ ⳳⲉʀⲋⲓⲟⲛ ➛** `1.7`
-**✗ ⲙⲟⲇⲉ ➛** `Dual`
-≺━━━━━━━━ - ━━━━━━━≻
-**✗ ⲋυⲇⲟ ➛** `{_parse_arg(sudo.Dynamic.ENABLED)}`
-**✗ ⲣⲩⲧⲏⲟⲛ ➛** `{ver.__python_version__}`
-**✗ ⲣⲩʀⲟⳋʀⲁⲙ ➛** `{ver.__pyro_version__}`
-≺━━━━━━━━ - ━━━━━━━≻
-🎭 T.me/DarkPentester**"""
         copy_ = "https://xhamster.com/"
         markup = InlineKeyboardMarkup([
             [
                 InlineKeyboardButton(text="• ᴅᴇᴠᴇʟᴏᴘᴇʀ •", url="https://t.me/DarkPentester"),
-                InlineKeyboardButton(text="• ᴀꜱꜱɪꜱᴛᴀɴᴛ •", url="DarkPentesterBot")
+                InlineKeyboardButton(text="• ᴀꜱꜱɪꜱᴛᴀɴᴛ •", url="https://t.me/DarkPentesterBot")
             ],
             [InlineKeyboardButton(text="• ʀᴇᴘᴏ •", url=copy_)]
         ])
-    return outputr, markup
+    return output, markup
 
 
 def _parse_arg(arg: bool) -> str:
