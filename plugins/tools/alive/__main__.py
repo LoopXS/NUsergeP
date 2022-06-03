@@ -84,7 +84,8 @@ output += f"""
 ≺━━━━━━━━ - ━━━━━━━≻"""
     if not message.client.is_bot:
         output += f"\n🎭 T.me/DarkPentester**"
-    outputr = f"""
+    else:
+        outputr = f"""
 **✦ ⲏⲉⲁʀⲧⳑⲉⲋⲋ ᥱ᥊ᥴᥣᥙsi᥎ᥱ ⲃⲟⲧ**
 ≺━━━━━━━━ - ━━━━━━━≻
 **✗ υⲣⲧⲓⲙⲉ ➛** `{userge.uptime}`
@@ -96,7 +97,6 @@ output += f"""
 **✗ ⲣⲩʀⲟⳋʀⲁⲙ ➛** `{ver.__pyro_version__}`
 ≺━━━━━━━━ - ━━━━━━━≻
 🎭 T.me/DarkPentester**"""
-    else:
         copy_ = "https://xhamster.com/"
         markup = InlineKeyboardMarkup([
             [
